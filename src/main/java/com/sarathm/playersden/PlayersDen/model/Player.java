@@ -9,18 +9,22 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="player_details")
+@Table(name="playerDetails")
 public class Player {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long player_id;
-	private String player_name;
-	private long player_age;
-	private String player_caption;
-	private long player_score;
+	private long playerId;
+	private String playerName;
+	private long playerAge;
+	private String playerCaption;
+	private long playerScore;
 	//private long player_team_id;
-	private long player_team_id;
+	private String playerTeamName;
+	
+	//@Column(name = "player_pic", length = 1000)
+	//@Lob
+	//private byte[] player_pic;
 	
 	//@ManyToOne
 	//@JoinColumn(name="team_id")
@@ -29,65 +33,63 @@ public class Player {
 		
 	}
 
-	public Player(String player_name, long player_age, String player_caption, long player_score,long player_team_id) {
+	public Player(String playerName, long playerAge, String playerCaption, long playerScore, String playerTeamName) {
 		super();
-		this.player_name = player_name;
-		this.player_age = player_age;
-		this.player_caption = player_caption;
-		this.player_score = player_score;
-		this.player_team_id = player_team_id;
+		this.playerName = playerName;
+		this.playerAge = playerAge;
+		this.playerCaption = playerCaption;
+		this.playerScore = playerScore;
+		this.playerTeamName = playerTeamName;
 	}
 
-
-
-
-
-
-	public long getPlayer_team_id() {
-		return player_team_id;
+	public long getPlayerId() {
+		return playerId;
 	}
 
-	public void setPlayer_team_id(long player_team_id) {
-		this.player_team_id = player_team_id;
+	//public void setPlayerId(long playerId) {
+	//	this.playerId = playerId;
+	//}
+
+	public String getPlayerName() {
+		return playerName;
 	}
 
-	public long getPlayer_age() {
-		return player_age;
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
-	public void setPlayer_age(long player_age) {
-		this.player_age = player_age;
+	public long getPlayerAge() {
+		return playerAge;
 	}
 
-
-	public long getPlayer_id() {
-		return player_id;
+	public void setPlayerAge(long playerAge) {
+		this.playerAge = playerAge;
 	}
 
-
-	public String getPlayer_name() {
-		return player_name;
+	public String getPlayerCaption() {
+		return playerCaption;
 	}
 
-	public void setPlayer_name(String player_name) {
-		this.player_name = player_name;
+	public void setPlayerCaption(String playerCaption) {
+		this.playerCaption = playerCaption;
 	}
 
-	public String getPlayer_caption() {
-		return player_caption;
+	public long getPlayerScore() {
+		return playerScore;
 	}
 
-	public void setPlayer_caption(String player_caption) {
-		this.player_caption = player_caption;
+	public void setPlayerScore(long playerScore) {
+		this.playerScore = playerScore;
 	}
 
-	public long getPlayer_score() {
-		return player_score;
+	public String getPlayerTeamName() {
+		return playerTeamName;
 	}
 
-	public void setPlayer_score(long player_score) {
-		this.player_score = player_score;
+	public void setPlayerTeamName(String playerTeamName) {
+		this.playerTeamName = playerTeamName;
 	}
+    
 
 	//public Team getTeam() {
 	//	return team;

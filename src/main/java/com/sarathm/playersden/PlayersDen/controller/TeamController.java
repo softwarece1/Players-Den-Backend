@@ -1,7 +1,10 @@
 package com.sarathm.playersden.PlayersDen.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +26,27 @@ public class TeamController {
 		teamService.createTeam(team);
 		
 		return team;
+	}
+	
+	@GetMapping(path="/team_scores")
+	public List<Team> getAllTeamScores(){
+		List<Team> team_scores = teamService.findAll();
+		//for (Player list : team_scores) {
+
+            //for (Integer n : list) {
+
+               // System.out.printf("%d ", n);
+            //}
+
+            //System.out.println();
+        
+		return team_scores;
+		//}
+	}
+	
+	@GetMapping(path="/get_random_teams")
+	public List<Team> getRandomTeams(){
+		return teamService.getRandomTeams();
 	}
 
 }

@@ -1,7 +1,11 @@
 package com.sarathm.playersden.PlayersDen.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +21,20 @@ public class PlayerController {
 	@Autowired
 	private PlayerService playerService;
 
-	@PostMapping(path="/team/player")
+	@PostMapping(path="/player")
 	public void registerPlayer(@RequestBody Player player) {
 		playerService.createPlayer(player);
+	}
+	
+	@GetMapping(path="/player_details")
+	public List<Player> findPlayerDetails(){
+	    List<Player> s = playerService.findPlayersByTeamName("stars");
+	   return s;
+	}
+	
+	@GetMapping(path="/{teamName}/get_first_team_players")
+	public List<Player> findFirstTeamPlayers(@PathVariable String teamName ){
+		return playerService.getFirstTeamPlayers(teamName);
 	}
 
 }

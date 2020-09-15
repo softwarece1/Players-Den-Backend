@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -17,74 +15,70 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "team_details")
+@Table(name = "teamDetails")
 public class Team {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long team_id;
+	//@Id
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//private long team_id;
 
 	//@GeneratedValue//(strategy=GenerationType.IDENTITY)
 	//@GeneratedValue(generator="system-uuid")
 	//@GenericGenerator(name="system-uuid", strategy = "uuid")
-	private String team_name;
-	private String team_caption;
-	private long team_score;
+	@Id
+	private String teamName;
+	private String teamCaption;
+	private long teamScore;
 	
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="player_team_id", referencedColumnName="team_id",updatable = false)
+	@JoinColumn(name="playerTeamName", referencedColumnName="teamName")
 	List<Player> players = new ArrayList<>();
 	
 	public Team() {
 		
 	}
 
-	public Team(String team_name, String team_caption, long team_score) {
+	public Team(String teamName, String teamCaption, long teamScore) {
 		super();
-		this.team_name = team_name;
-		this.team_caption = team_caption;
-		this.team_score = team_score;
-	}
-	
-
-
-
-	public long getTeam_id() {
-		return team_id;
+		this.teamName = teamName;
+		this.teamCaption = teamCaption;
+		this.teamScore = teamScore;
 	}
 
-	public String getTeam_name() {
-		return team_name;
+	public String getTeamName() {
+		return teamName;
 	}
 
-	public void setTeam_name(String team_name) {
-		this.team_name = team_name;
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
 
-	public String getTeam_caption() {
-		return team_caption;
+	public String getTeamCaption() {
+		return teamCaption;
 	}
 
-	public void setTeam_caption(String team_caption) {
-		this.team_caption = team_caption;
+	public void setTeamCaption(String teamCaption) {
+		this.teamCaption = teamCaption;
 	}
 
-	public long getTeam_score() {
-		return team_score;
+	public long getTeamScore() {
+		return teamScore;
 	}
 
-	public void setTeam_score(long team_score) {
-		this.team_score = team_score;
+	public void setTeamScore(long teamScore) {
+		this.teamScore = teamScore;
 	}
 
-	public List<Player> getPlayer() {
-	return players;
+	public List<Player> getPlayers() {
+		return players;
 	}
 
-	public void setPlayer(List<Player> players) {
+	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
+
+	
 	
 	
 	
