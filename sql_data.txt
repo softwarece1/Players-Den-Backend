@@ -1,0 +1,156 @@
+-- MySQL dump 10.13  Distrib 5.7.31, for Linux (x86_64)
+--
+-- Host: localhost    Database: playersDen
+-- ------------------------------------------------------
+-- Server version	5.7.31
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `hibernate_sequence`
+--
+
+DROP TABLE IF EXISTS `hibernate_sequence`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hibernate_sequence`
+--
+
+LOCK TABLES `hibernate_sequence` WRITE;
+/*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
+INSERT INTO `hibernate_sequence` VALUES (43),(43),(43);
+/*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `history`
+--
+
+DROP TABLE IF EXISTS `history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `history` (
+  `h_id` bigint(20) NOT NULL,
+  `t_history_id` bigint(20) NOT NULL,
+  `t_history_score` bigint(20) NOT NULL,
+  `t_history_team` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`h_id`),
+  KEY `FKjej1wen50c6xr7hqfxsqitd2a` (`t_history_id`),
+  CONSTRAINT `FKjej1wen50c6xr7hqfxsqitd2a` FOREIGN KEY (`t_history_id`) REFERENCES `tournament` (`t_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `history`
+--
+
+LOCK TABLES `history` WRITE;
+/*!40000 ALTER TABLE `history` DISABLE KEYS */;
+INSERT INTO `history` VALUES (21,1,130,'Gems'),(22,1,170,'Mumbai'),(23,1,0,'Rocks'),(24,1,180,'Stars'),(25,1,0,'Sun'),(31,2,0,'Gems'),(32,2,170,'Mumbai'),(33,2,0,'Rocks'),(34,2,100,'Stars'),(35,2,250,'Sun'),(37,3,110,'Gems'),(38,3,0,'Kolkata'),(39,3,50,'Mumbai'),(40,3,270,'Rocks'),(41,3,40,'Stars'),(42,3,170,'Sun');
+/*!40000 ALTER TABLE `history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `player_details`
+--
+
+DROP TABLE IF EXISTS `player_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player_details` (
+  `player_id` bigint(20) NOT NULL,
+  `player_age` bigint(20) NOT NULL,
+  `player_caption` varchar(255) DEFAULT NULL,
+  `player_name` varchar(255) DEFAULT NULL,
+  `player_score` bigint(20) NOT NULL,
+  `player_team_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`player_id`),
+  KEY `FKayunudnkv9chmvusd05rj8ay1` (`player_team_name`),
+  CONSTRAINT `FKayunudnkv9chmvusd05rj8ay1` FOREIGN KEY (`player_team_name`) REFERENCES `team_details` (`team_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player_details`
+--
+
+LOCK TABLES `player_details` WRITE;
+/*!40000 ALTER TABLE `player_details` DISABLE KEYS */;
+INSERT INTO `player_details` VALUES (1,21,'GemsPlayerCaption1','GemsPlayer1',0,'Gems'),(2,22,'GemsPlayerCaption2','GemsPlayer2',0,'Gems'),(3,23,'GemsPlayerCaption3','GemsPlayer3',0,'Gems'),(4,21,'StarsPlayerCaption1','StarsPlayer1',0,'Stars'),(5,32,'StarsPlayerCaption2','StarsPlayer2',0,'Stars'),(6,24,'StarsPlayerCaption3','StarsPlayer3',0,'Stars'),(7,26,'RocksPlayerCaption1','RocksPlayer1',0,'Rocks'),(8,27,'RocksPlayerCaption2','RocksPlayer2',0,'Rocks'),(9,28,'RocksPlayerCaption3','RocksPlayer3',0,'Rocks'),(10,24,'MumbaiPlayerCaption','MumbaiPlayer1',0,'Mumbai'),(11,26,'MumbaiPlayerCaption2','MumbaiPlayer2',0,'Mumbai'),(12,29,'MumbaiPlayerCaption3','MumbaiPlayer3',0,'Mumbai'),(13,24,'GemsPlayerCaption4','GemsPlayer4',0,'Gems'),(14,31,'StarsPlayerCaption4','StarsPlayer4',0,'Stars'),(15,26,'RocksPlayerCaption4','RocksPlayer4',0,'Rocks'),(16,25,'MumbaiPlayerCaption4','MumbaiPlayer4',0,'Mumbai'),(17,23,'SunPlayerCaption1','SunPlayer1',0,'Sun'),(18,24,'SunPlayerCaption2','SunPlayer2',0,'Sun'),(19,25,'SunPlayerCaption3','SunPlayer3',0,'Sun'),(20,25,'SunPlayerCaption4','SunPlayer4',0,'Sun'),(36,23,'Kolkatacap1','KolkataPlayer1',0,'Kolkata');
+/*!40000 ALTER TABLE `player_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `team_details`
+--
+
+DROP TABLE IF EXISTS `team_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `team_details` (
+  `team_name` varchar(255) NOT NULL,
+  `team_caption` varchar(255) DEFAULT NULL,
+  `team_score` bigint(20) NOT NULL,
+  PRIMARY KEY (`team_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `team_details`
+--
+
+LOCK TABLES `team_details` WRITE;
+/*!40000 ALTER TABLE `team_details` DISABLE KEYS */;
+INSERT INTO `team_details` VALUES ('Gems','Cool',0),('Kolkata','something',0),('Mumbai','Indians',0),('Rocks','Shocks',0),('Stars','Lights',0),('Sun','Hyderabad',0);
+/*!40000 ALTER TABLE `team_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tournament`
+--
+
+DROP TABLE IF EXISTS `tournament`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tournament` (
+  `t_id` bigint(20) NOT NULL,
+  `t_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`t_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tournament`
+--
+
+LOCK TABLES `tournament` WRITE;
+/*!40000 ALTER TABLE `tournament` DISABLE KEYS */;
+INSERT INTO `tournament` VALUES (1,'2020-09-18 00:00:00'),(2,'2020-09-19 00:00:00'),(3,'2020-09-21 00:00:00');
+/*!40000 ALTER TABLE `tournament` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-09-21 15:05:20
