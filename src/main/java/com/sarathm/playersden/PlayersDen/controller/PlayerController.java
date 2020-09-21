@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,5 +37,20 @@ public class PlayerController {
 	public List<Player> findFirstTeamPlayers(@PathVariable String teamName ){
 		return playerService.getFirstTeamPlayers(teamName);
 	}
+	
+	@PutMapping(path="/{player_name}/{player_value}/{prev_score}")
+	public long updatePlayerScore(@PathVariable String player_name,@PathVariable long player_value, @PathVariable long prev_score, @RequestBody Player player ) {
+		return playerService.updatePlayerScore(player_name,player_value,prev_score);
+	}
+	
+	@PutMapping(path="/clear_scores")
+	public long clearScores(@RequestBody String player) {
+		playerService.clearScores();
+		return 0;
+	}
+	
+	
+	
+	
 
 }

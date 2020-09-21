@@ -29,5 +29,17 @@ public class PlayerService {
 		// TODO Auto-generated method stub
 		return playerRepository.findFirstTeamPlayers(teamName);
 	}
+	public long updatePlayerScore(String player_name,long player_value, long prev_score) {
+		// TODO Auto-generated method stub
+		long l =  (long) ((Math.random() * (player_value - 1)) + 1);
+		l = l * 10;
+		l = l + prev_score;
+		 playerRepository.updatePlayerScore(player_name,l);
+		return l;
+	}
+	
+	public void clearScores() {
+		playerRepository.clearScores();
+	}
 
 }

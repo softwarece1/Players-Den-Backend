@@ -29,4 +29,26 @@ public class TeamService{
 		return teamRepository.findTeam();
 	}
 
+	public void updateTeamScore(String team_name, long team_score) {
+		// TODO Auto-generated method stub
+		teamRepository.updateTeamScore(team_name,team_score);
+		
+	}
+
+	public Long getTeamScore(String team_name) {
+		// TODO Auto-generated method stub
+		return teamRepository.getTeamScore(team_name);
+	}
+
+	public void clearTeamScores() {
+		// TODO Auto-generated method stub
+		teamRepository.clearTeamScores();
+		
+	}
+
+	public long getTeamNameCount(String team_name) {
+		// TODO Auto-generated method stub
+		return teamRepository.getTeamCountScore(team_name);
+	}
+
 }
